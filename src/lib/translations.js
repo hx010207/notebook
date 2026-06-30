@@ -26,6 +26,7 @@ export const TRANSLATIONS = {
     noTransactions: "No transactions yet.",
     balance: "Balance",
     confirmDelete: "Are you sure you want to permanently delete this ledger and all its records?",
+    addedOn: "Added: ",
   },
   hi: {
     title: "नोटबुक",
@@ -54,5 +55,6 @@ export const TRANSLATIONS = {
     noTransactions: "अभी तक कोई लेन-देन नहीं है।",
     balance: "शेष राशि",
     confirmDelete: "क्या आप निश्चित रूप से इस खाते और इसके सभी रिकॉर्ड को स्थायी रूप से हटाना चाहते हैं?",
+    addedOn: "जोड़ा गया: ",
   }
 };

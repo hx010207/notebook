@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Plus, Search, User, LogOut, ChevronRight, RefreshCw, Trash2 } from 'lucide-react';
 import { db, syncFromServer } from '../lib/db';
 import { TRANSLATIONS } from '../lib/translations';
+import { format } from 'date-fns';
 
 export default function Dashboard({ onLogout, onSelectCustomer, lang }) {
   const [customers, setCustomers] = useState([]);
@@ -172,6 +173,11 @@ export default function Dashboard({ onLogout, onSelectCustomer, lang }) {
                     <div>
                       <h4 className="font-semibold text-zinc-100 group-hover/btn:text-soft-green transition-colors">{customer.name}</h4>
                       {customer.phone && <p className="text-sm text-zinc-400 mt-0.5">{customer.phone}</p>}
+                      {customer.created_at && (
+                        <p className="text-[10px] text-zinc-500 mt-1 font-medium">
+                          {t.addedOn}{format(new Date(customer.created_at), 'MMM d, yyyy')}
+                        </p>
+                      )}
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="text-right mr-2">
@@ -187,7 +193,7 @@ export default function Dashboard({ onLogout, onSelectCustomer, lang }) {
                   </button>
                   <button
                     onClick={(e) => handleDeleteLedger(e, customer.id)}
-                    className="p-2 text-zinc-500 hover:text-soft-red transition-colors rounded-xl hover:bg-red-950/20 md:opacity-0 group-hover:opacity-100 focus:opacity-100 shrink-0"
+                    className="p-2 text-zinc-500 hover:text-soft-red transition-colors rounded-xl hover:bg-red-950/20 shrink-0"
                     title="Delete Ledger"
                   >
                     <Trash2 className="w-4.5 h-4.5" />
